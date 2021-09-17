@@ -81,7 +81,21 @@ body {
         display: none;
     }
 }
-
+.image-hand {
+    position: absolute;
+width: 250px;
+top: -133px;
+left: -190px;
+}
+@media (max-width: 900px) {
+    .image-hand {
+        display: none;
+        position: absolute;
+    width: 250px;
+    top: -133px;
+    left: -190px;
+    }
+}
 .hero-title {
     font-family: 'SF TransRobotics', sans-serif;
     color: #4950F6;
@@ -2059,6 +2073,7 @@ main {
 }
 .text-push {
     margin-left: 12px;
+    margin-Bottom: 18px;
 }
 #myBtn {
     display: none; 
