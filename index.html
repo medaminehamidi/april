@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Heebo:400,500,700|Fira+Sans:600" rel="stylesheet">
     <link rel="stylesheet" href="dist/css/style.css">
     <link href="http://fonts.cdnfonts.com/css/sf-transrobotics-2" rel="stylesheet">
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="https://unpkg.com/animejs@2.2.0/anime.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
@@ -16,7 +17,19 @@
 
 <body class="is-boxed has-animations">
     <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa fa-arrow-up" aria-hidden="true"></i>
-    </button> 
+    </button>
+    <a href="https://web.facebook.com/TechnoRobotPrive/?_rdc=1&_rdr" id="Social">
+        <div style="font-size: 23px;color: #fff;display: flex;align-items: center;justify-content: center;">
+            <i class="fa fa-facebook"></i>
+        </div>
+    </a>
+    <a href="https://www.instagram.com/technorobotmaroc/" id="Social2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24">
+            <path
+                d="M21.231 0h-18.462c-1.529 0-2.769 1.24-2.769 2.769v18.46c0 1.531 1.24 2.771 2.769 2.771h18.463c1.529 0 2.768-1.24 2.768-2.771v-18.46c0-1.529-1.239-2.769-2.769-2.769zm-9.231 7.385c2.549 0 4.616 2.065 4.616 4.615 0 2.549-2.067 4.616-4.616 4.616s-4.615-2.068-4.615-4.616c0-2.55 2.066-4.615 4.615-4.615zm9 12.693c0 .509-.413.922-.924.922h-16.152c-.511 0-.924-.413-.924-.922v-10.078h1.897c-.088.315-.153.64-.2.971-.05.337-.081.679-.081 1.029 0 4.079 3.306 7.385 7.384 7.385s7.384-3.306 7.384-7.385c0-.35-.031-.692-.081-1.028-.047-.331-.112-.656-.2-.971h1.897v10.077zm0-13.98c0 .509-.413.923-.924.923h-2.174c-.511 0-.923-.414-.923-.923v-2.175c0-.51.412-.923.923-.923h2.174c.511 0 .924.413.924.923v2.175z"
+                fill-rule="evenodd" clip-rule="evenodd" fill="#fff" />
+        </svg>
+    </a>
     <div class="body-wrap boxed-container">
         <header class="site-header">
             <div class="header-shape header-shape-1">
@@ -80,30 +93,55 @@
                                 </div>
                             </div>
                             <div class="form-conatiner fadeleft-animation">
-                                <img src="./dist/images/arm.png" class="image-hand" />
+                                <img src="./dist/images/arm2.0.png" class="image-hand" />
                                 <div class="text-field control control-expanded">
                                     <i class="fa fa-user icon"></i>
-                                    <input class="input" type="email" name="email" placeholder="Nom de l'étudiant">
+                                    <input class="input" required id="name" name="email"
+                                        placeholder="Nom de l'étudiant">
                                 </div>
                                 <div class="text-field control control-expanded">
                                     <i class="fa fa-calendar-minus-o icon"></i>
-                                    <input class="input" type="number" name="email" placeholder="Age de l'étudiant">
+                                    <input class="input" required id="age" type="number" name="email"
+                                        placeholder="Age de l'étudiant">
                                 </div>
                                 <div class="text-field control control-expanded">
                                     <i class="fa fa-users icon"></i>
-                                    <input class="input" type="email" name="email"
+                                    <input class="input" required id="daddyName" name="email"
                                         placeholder="Nom et Prénom du parent">
                                 </div>
                                 <div class="text-field control control-expanded">
                                     <i class="fa fa-phone-square  icon"></i>
-                                    <input class="input" type="email" name="email" placeholder="Tel du parent">
+                                    <input class="input" required id="tel" name="email" placeholder="Tel du parent">
                                 </div>
                                 <div class="text-field control control-expanded">
                                     <i class="fa fa-envelope icon"></i>
-                                    <input class="input" type="email" name="email" placeholder="Email du parent">
+                                    <input class="input" required id="mail" type="email" name="email"
+                                        placeholder="Email du parent">
+                                </div>
+                                <div class="small-input-container">
+                                    <div class="text-field control smallInput control-expanded">
+                                        <i class="fa fa-map-marker icon"></i>
+                                        <input class="input" list="contry" id="contryList">
+                                        <datalist id="contry">
+                                        </datalist>
+                                    </div>
+                                    <div class="text-field control smallInput control-expanded">
+                                        <i class="fa fa-street-view icon"></i>
+                                        <input class="input" required id="city" type="text" name="city"
+                                            placeholder="City">
+                                    </div>
+                                    <div class="text-field control smallInput control-expanded">
+                                        <i class="fa fa-globe icon"></i>
+                                        <select class="input" name="language" id="language">
+                                            <option value="english">English</option>
+                                            <option value="francais">Francais</option>
+                                            <option value="arab">Arab</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="button-container control">
-                                    <a class="button button-primary button-block" href="#">inscrivez-vous</a>
+                                    <button class="button button-primary button-block" onclick="sendEmail()"
+                                        href="#">inscrivez-vous</button>
                                 </div>
                             </div>
                         </div>
@@ -270,18 +308,24 @@
                                     <div class="text-center">
                                         <h4 class="feature-title h3-mobile mb-8">Séances en présentiel</h4>
                                     </div>
-                                    <p class="text-sm">Le programme en présentiel est une formation annuelle en groupe de maximum 12 enfants, articulée sur 2 sessions dont chacune est composée de 16 séances de 2h par semaine.
-                                        Votre enfant, dès l’âge de 8 ans, peut s’amuser en apprenant à  :
-                                        
-                                    <div class="text-push"> <br>● Electronique, programmation et à la conception en 3D de A à Z  sans même avoir besoin de prérequis.
+                                    <p class="text-sm">Le programme en présentiel est une formation annuelle en groupe
+                                        de maximum 12 enfants, articulée sur 2 sessions dont chacune est composée de 16
+                                        séances de 2h par semaine.
+                                        Votre enfant, dès l’âge de 8 ans, peut s’amuser en apprenant à :
+
+                                    <div class="text-push"> <br>● Electronique, programmation et à la conception en 3D
+                                        de A à Z sans même avoir besoin de prérequis.
                                         <br>● Manipuler les capteurs et des actionneurs électroniques.
 
                                         des capteurs et des actionneurs électroniques.
                                         <br>● Savoir résoudre des problèmes algorithmiques.
                                         <br>● Désigner, construire et programmer ses propres robots.
-                                        <br>● Travailler en équipe et participer à des compétitions locales de robotique.
+                                        <br>● Travailler en équipe et participer à des compétitions locales de
+                                        robotique.
                                     </div>
-                                    <p class="text-sm">A la fin de chaque session, l’élève reçoit son robot avec tous les composants électroniques utilisés, en plus du support du cours et de l’attestation de réussite de la session par livraison à domicile.</p>
+                                    <p class="text-sm">A la fin de chaque session, l’élève reçoit son robot avec tous
+                                        les composants électroniques utilisés, en plus du support du cours et de
+                                        l’attestation de réussite de la session par livraison à domicile.</p>
                                     </p>
                                 </div>
                             </div>
@@ -320,12 +364,17 @@
                                     <div class="text-center">
                                         <h4 class="feature-title h3-mobile mb-8">Séances en ligne</h4>
                                     </div>
-                                    <p class="text-sm">Le programme en ligne est une formation individuelle entre l’enfant et le formateur via des appels vidéo et des partages de l’écran, articulée sur 2 sessions dont chacune est composée de 16 séances de 2h par semaine.
-                                        articulée sur 2 sessions dont chacune est composée de 16 séances de 2h par semaine.
-                                        Votre enfant, dès l’âge de 8 ans, peut s’amuser en apprenant à  :
-                                        
+                                    <p class="text-sm">Le programme en ligne est une formation individuelle entre
+                                        l’enfant et le formateur via des appels vidéo et des partages de l’écran,
+                                        articulée sur 2 sessions dont chacune est composée de 16 séances de 2h par
+                                        semaine.
+                                        articulée sur 2 sessions dont chacune est composée de 16 séances de 2h par
+                                        semaine.
+                                        Votre enfant, dès l’âge de 8 ans, peut s’amuser en apprenant à :
+
                                     <div class="text-push">
-                                        <br>● Electronique, programmation et à la conception en 3D de A à Z  sans même avoir besoin de prérequis.
+                                        <br>● Electronique, programmation et à la conception en 3D de A à Z sans même
+                                        avoir besoin de prérequis.
                                         <br>●
                                         Manipuler les capteurs et des actionneurs électroniques.
                                         <br>● Savoir résoudre des problèmes algorithmiques.
@@ -333,7 +382,9 @@
                                         <br> ●
                                         Travailler en équipe et participer à des compétitions locales de robotique.
                                     </div>
-                                    <p class="text-sm">A la fin de chaque session, l’élève reçoit son robot avec tous les composants électroniques utilisés, en plus du support du cours et de l’attestation de réussite de la session par livraison à domicile.</p>
+                                    <p class="text-sm">A la fin de chaque session, l’élève reçoit son robot avec tous
+                                        les composants électroniques utilisés, en plus du support du cours et de
+                                        l’attestation de réussite de la session par livraison à domicile.</p>
                                     </p>
                                 </div>
                             </div>
@@ -343,35 +394,29 @@
             </section>
             <footer class="site-footer">
                 <div class="container">
-                    <div class="site-footer-inner has-top-divider">
-                        <div class="brand footer-brand">
+                    <div class="site-footer-inner">
+                        <div class="footer-container">
+                            <div class="footer-copyright"> Adresse : 10 Rue Ghandi, Rabat 10000</div>
+                            <div class="footer-copyright">Téléphone : 0615-016677</div>
+                            <div class="footer-copyright"> Email: contact@technorobot.ma</div>
+                            <div class="footer-copyright margin">&copy; Techno-Robot. All Rights Reserved.</div>
+                        </div>
+                        <div class="image-container2">
                             <img src="./dist/images/logo.png" class="logo-min" />
                         </div>
                         <ul class="footer-links list-reset">
                             <li>
-                                <a href="#">
+                                <a href="https://web.facebook.com/TechnoRobotPrive/?_rdc=1&_rdr">
                                     <span class="screen-reader-text">Facebook</span>
-                                    <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M6.023 16L6 9H3V6h3V4c0-2.7 1.672-4 4.08-4 1.153 0 2.144.086 2.433.124v2.821h-1.67c-1.31 0-1.563.623-1.563 1.536V6H13l-1 3H9.28v7H6.023z"
-                                            fill="#FFF" />
-                                    </svg>
+                                    <div style="font-size: 23px;color: #fff;margin-right: 17px;">
+                                        <i class="fa fa-facebook"></i>
+                                    </div>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    <span class="screen-reader-text">Twitter</span>
-                                    <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M16 3c-.6.3-1.2.4-1.9.5.7-.4 1.2-1 1.4-1.8-.6.4-1.3.6-2.1.8-.6-.6-1.5-1-2.4-1-1.7 0-3.2 1.5-3.2 3.3 0 .3 0 .5.1.7-2.7-.1-5.2-1.4-6.8-3.4-.3.5-.4 1-.4 1.7 0 1.1.6 2.1 1.5 2.7-.5 0-1-.2-1.5-.4C.7 7.7 1.8 9 3.3 9.3c-.3.1-.6.1-.9.1-.2 0-.4 0-.6-.1.4 1.3 1.6 2.3 3.1 2.3-1.1.9-2.5 1.4-4.1 1.4H0c1.5.9 3.2 1.5 5 1.5 6 0 9.3-5 9.3-9.3v-.4C15 4.3 15.6 3.7 16 3z"
-                                            fill="#FFF" />
-                                    </svg>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
+                                <a href="https://www.instagram.com/technorobotmaroc/">
                                     <span class="screen-reader-text">Google</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24">
                                         <path
                                             d="M21.231 0h-18.462c-1.529 0-2.769 1.24-2.769 2.769v18.46c0 1.531 1.24 2.771 2.769 2.771h18.463c1.529 0 2.768-1.24 2.768-2.771v-18.46c0-1.529-1.239-2.769-2.769-2.769zm-9.231 7.385c2.549 0 4.616 2.065 4.616 4.615 0 2.549-2.067 4.616-4.616 4.616s-4.615-2.068-4.615-4.616c0-2.55 2.066-4.615 4.615-4.615zm9 12.693c0 .509-.413.922-.924.922h-16.152c-.511 0-.924-.413-.924-.922v-10.078h1.897c-.088.315-.153.64-.2.971-.05.337-.081.679-.081 1.029 0 4.079 3.306 7.385 7.384 7.385s7.384-3.306 7.384-7.385c0-.35-.031-.692-.081-1.028-.047-.331-.112-.656-.2-.971h1.897v10.077zm0-13.98c0 .509-.413.923-.924.923h-2.174c-.511 0-.923-.414-.923-.923v-2.175c0-.51.412-.923.923-.923h2.174c.511 0 .924.413.924.923v2.175z"
                                             fill-rule="evenodd" clip-rule="evenodd" fill="#fff" />
@@ -379,10 +424,6 @@
                                 </a>
                             </li>
                         </ul>
-                        <ul class="footer-social-links list-reset">
-
-                        </ul>
-                        <div class="footer-copyright">&copy; Techno-Robot. All Rights Reserved.</div>
                     </div>
                 </div>
             </footer>
