@@ -1,3 +1,4 @@
+const mailer = (name, age, pname, phone, pmail, contry, city, lang) => {return `<div style="border-collapse: collapse;display: table;width: 100%;height: 100%;background-color: transparent;"> <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 0px;background-color: transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:600px;"><tr style="background-color: #ffffff;"><![endif]--> <!--[if (mso)|(IE)]><td align="center" width="600" style="width: 600px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;" valign="top"><![endif]--><div class="u-col u-col-100" style="max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;"><div style="height: 100%;width: 100% !important;"><!--[if (!mso)&(!IE)]><!--><div style="box-sizing: border-box; height: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;"><!--<![endif]--><table style="font-family:'Lato',sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0"><tbody><tr> <td style="overflow-wrap:break-word;word-break:break-word;padding:40px 40px 30px;font-family:'Lato',sans-serif;" align="left"> <div style="font-size: 14px; line-height: 140%; text-align: left; word-wrap: break-word;"><p style="font-size: 14px; line-height: 140%;"><span style="font-size: 18px; line-height: 25.2px; color: #666666;">Bonjour,</span></p><p style="font-size: 14px; line-height: 140%;">&nbsp;</p><p style="font-size: 14px; line-height: 140%;"><span style="font-size: 18px; line-height: 25.2px; color: #666666;">Nom complet : ${name}&nbsp;</span></p><p style="font-size: 14px; line-height: 140%;">&nbsp;</p><p style="font-size: 14px; line-height: 140%;"><span style="font-size: 18px; line-height: 25.2px; color: #666666;">L'âge&nbsp; : ${age}</span></p><p style="font-size: 14px; line-height: 140%;">&nbsp;</p><p style="font-size: 14px; line-height: 140%;"><span style="font-size: 18px; line-height: 25.2px; color: #666666;">Nom des parents : ${pname}</span></p><p style="font-size: 14px; line-height: 140%;"><span style="font-size: 18px; line-height: 25.2px; color: #666666;">Numéro de téléphone : ${phone}</span></p><p style="font-size: 14px; line-height: 140%;">&nbsp;</p><p style="font-size: 14px; line-height: 140%;"><span style="font-size: 18px; line-height: 25.2px; color: #666666;">Mail des parents : ${pmail}</span></p><p style="font-size: 14px; line-height: 140%;">&nbsp;</p><p style="font-size: 14px; line-height: 140%;"><span style="font-size: 18px; line-height: 25.2px; color: #666666;">Pays&nbsp; : ${contry}</span></p><p style="font-size: 14px; line-height: 140%;">&nbsp;</p><p style="font-size: 14px; line-height: 140%;"><span style="font-size: 18px; line-height: 25.2px; color: #666666;">Ville&nbsp; : ${city}&nbsp;</span></p><p style="font-size: 14px; line-height: 140%;">&nbsp;</p><p style="font-size: 14px; line-height: 140%;"><span style="font-size: 18px; line-height: 25.2px; color: #666666;">Langue&nbsp;: ${lang}</span></p><p style="font-size: 14px; line-height: 140%;"><span style="font-size: 18px; line-height: 25.2px; color: #666666;">&nbsp;</span></p><p style="font-size: 14px; line-height: 140%;">&nbsp;</p><p style="font-size: 14px; line-height: 140%;"><span style="font-size: 18px; line-height: 25.2px; color: #666666;">&nbsp;</span></p></div> </td></tr></tbody></table><div style="font-size: 14px; line-height: 140%; text-align: left; word-wrap: break-word;"><p style="font-size: 14px; line-height: 140%; text-align: center;"><span style="color: #888888; font-size: 14px; line-height: 19.6px;"><strong><span style="font-size: 16px; line-height: 22.4px;">with love ❤️</span></strong><em><span style="font-size: 16px; line-height: 22.4px;"><br></span></em></span></p></div><!--[if (!mso)&(!IE)]><!--></div><!--<![endif]--></div></div><!--[if (mso)|(IE)]></td><![endif]--> <!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]--></div>`}
 var slideIndex = 0;
 carousel();
 
@@ -59,19 +60,25 @@ function topFunction() {
 
 function sendEmail() {
   Email.send({
-    Host: "smtp.gmail.com",
-    Username: "hajibahida5@gmail.com",
-    Password: "18031972Amine",
-    To: 'hamidiamine1998@gmail.com',
-    From: "hajibahida5@gmail.com",
-    Subject: "New Inscription ",
-    Body: `New Inscription <br/> Name :${document.getElementById("name").value}<br/> Age : ${document.getElementById("age").value} <br/> Parents Name : ${document.getElementById("daddyName").value} <br/> Talephone : ${document.getElementById("tel").value} <br/> Parents Mail : ${document.getElementById("mail").value} <br/> Contry : ${document.getElementById("contryList").value} <br/> City : ${document.getElementById("city").value} <br/> Language : ${document.getElementById("language").value} `,
-  }).then(
-    message => alert('DONE')
-  );
-  return false
+    SecureToken : "7f471c75-d99c-4e33-a950-01d4d37e7e1b",
+    To : 'zetagmaxim2@gmail.com',
+    From : "zetagmaxim2@gmail.com",
+    Subject : "New Inscription",
+    Body :  mailer(document.getElementById("name").value, document.getElementById("age").value, document.getElementById("daddyName").value, document.getElementById("tel").value, document.getElementById("mail").value, document.getElementById("contryList").value, document.getElementById("city").value, document.getElementById("language").value)
+}).then(
+  message => alert(message)
+)
+  // console.warn({
+  //   Host: "smtp.elasticemail.com",
+  //   Username: "zetagmaxim2@gmail.com",
+  //   Password: "DC8B2BB70D628B7523A7829E72F72FE06156",
+  //   To: 'zetagmaxim2@gmail.com',
+  //   From: "zetagmaxim2@gmail.com",
+  //   Subject: "New Inscription ",
+  //   Body: () => mailer(document.getElementById("name").value, document.getElementById("age").value, document.getElementById("daddyName").value, document.getElementById("tel").value, document.getElementById("mail").value, document.getElementById("contryList").value, document.getElementById("city").value, document.getElementById("language").value),
+  // })
 }
-
+// 7f471c75-d99c-4e33-a950-01d4d37e7e1b
 const countryList = [
   "Afghanistan",
   "Albania",
