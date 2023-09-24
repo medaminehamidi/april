@@ -16,6 +16,21 @@
 </head>
 
 <body class="is-boxed has-animations">
+    <div id="id01" class="modal">
+        <span onclick="document.getElementById('id01').style.display='none'; refresh();" class="close" title="Close Modal">&times;</span>
+        <form class="modal-content rounded">
+          <div class="container">
+            <h1>Demande d'inscription envoyée</h1>
+            <p>Votre inscription a été envoyée avec succès</p>
+            <div id="id02">
+
+            </div>
+            <div class="clearfix">
+              <button type="button" onclick="refresh()" class="cancelbtn">Fermer</button>
+            </div>
+          </div>
+        </form>
+      </div>
     <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa fa-arrow-up" aria-hidden="true"></i>
     </button>
     <a href="https://web.facebook.com/TechnoRobotPrive/?_rdc=1&_rdr" id="Social">
@@ -121,7 +136,7 @@
                                 <div class="small-input-container">
                                     <div class="text-field control smallInput control-expanded">
                                         <i class="fa fa-map-marker icon"></i>
-                                        <input class="input" list="contry" id="contryList">
+                                        <input class="input" value="Morocco" list="contry" id="contryList">
                                         <datalist id="contry">
                                         </datalist>
                                     </div>
