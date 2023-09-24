@@ -11,7 +11,7 @@ function carousel() {
   slideIndex++;
   if (slideIndex > x.length) { slideIndex = 1 }
   x[slideIndex - 1].style.display = "block";
-  setTimeout(carousel, 3000); 
+  setTimeout(carousel, 3000);
 }
 
 var slideIndex2 = 0;
@@ -26,7 +26,7 @@ function carousel2() {
   slideIndex2++;
   if (slideIndex2 > x.length) { slideIndex2 = 1 }
   x[slideIndex2 - 1].style.display = "block";
-  setTimeout(carousel2, 3000); 
+  setTimeout(carousel2, 3000);
 }
 
 mybutton = document.getElementById("myBtn");
@@ -34,9 +34,9 @@ mybutton2 = document.getElementById("Social2");
 mybutton3 = document.getElementById("Social");
 
 window.onscroll = function () {
-   scrollFunction() 
-   scrollFunction2() 
-  };
+  scrollFunction()
+  scrollFunction2()
+};
 function scrollFunction() {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
     mybutton.style.display = "block";
@@ -54,19 +54,19 @@ function scrollFunction2() {
   }
 }
 function topFunction() {
-  document.body.scrollTop = 0; 
-  document.documentElement.scrollTop = 0; 
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
 }
 
 function sendEmail() {
   Email.send({
-    SecureToken : "7f471c75-d99c-4e33-a950-01d4d37e7e1b",
-    To : 'zetagmaxim2@gmail.com',
-    From : "zetagmaxim2@gmail.com",
+    SecureToken : "7efcbbde-7d49-4a1e-a49f-b08ffa8f2914",
+    To : 'contact@technorobot.ma',
+    From : "boojn48@gmail.com",
     Subject : "New Inscription",
     Body :  mailer(document.getElementById("name").value, document.getElementById("age").value, document.getElementById("daddyName").value, document.getElementById("tel").value, document.getElementById("mail").value, document.getElementById("contryList").value, document.getElementById("city").value, document.getElementById("language").value)
 }).then(
-  message => alert(message)
+  message => alert('Notification Envoyer')
 )
   // console.warn({
   //   Host: "smtp.elasticemail.com",
@@ -78,6 +78,7 @@ function sendEmail() {
   //   Body: () => mailer(document.getElementById("name").value, document.getElementById("age").value, document.getElementById("daddyName").value, document.getElementById("tel").value, document.getElementById("mail").value, document.getElementById("contryList").value, document.getElementById("city").value, document.getElementById("language").value),
   // })
 }
+// DC8B2BB70D628B7523A7829E72F72FE06156
 // 7f471c75-d99c-4e33-a950-01d4d37e7e1b
 const countryList = [
   "Afghanistan",
