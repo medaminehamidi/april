@@ -59,15 +59,36 @@ function topFunction() {
 }
 
 function sendEmail() {
-  Email.send({
-    SecureToken: "7efcbbde-7d49-4a1e-a49f-b08ffa8f2914",
-    To: 'contact@technorobot.ma',
-    From: "boojn48@gmail.com",
-    Subject: "New Inscription",
-    Body: mailer(document.getElementById("name").value, document.getElementById("age").value, document.getElementById("daddyName").value, document.getElementById("tel").value, document.getElementById("mail").value, document.getElementById("contryList").value, document.getElementById("city").value, document.getElementById("language").value)
-  }).then(
-    renderModal()
-  )
+  if (
+    document.getElementById("name").value &&
+    document.getElementById("age").value &&
+    document.getElementById("daddyName").value &&
+    document.getElementById("tel").value &&
+    document.getElementById("mail").value &&
+    document.getElementById("contryList").value &&
+    document.getElementById("city").value &&
+    document.getElementById("language").value
+  ) {
+    Email.send({
+      SecureToken: "7efcbbde-7d49-4a1e-a49f-b08ffa8f2914",
+      To: 'contact@technorobot.ma',
+      From: "boojn48@gmail.com",
+      Subject: "New Inscription",
+      Body: mailer(document.getElementById("name").value, document.getElementById("age").value, document.getElementById("daddyName").value, document.getElementById("tel").value, document.getElementById("mail").value, document.getElementById("contryList").value, document.getElementById("city").value, document.getElementById("language").value)
+    }).then(
+      renderModal()
+    )
+    
+    document.getElementById('please-fill').style.display = 'none'
+  }
+  else {
+    document.getElementById('please-fill').style.display = 'flex'
+    document.getElementById('please-fill').style.fontSize = '16px'
+    document.getElementById('please-fill').classList.add('shakeIt')
+    setTimeout(function(){
+      document.getElementById('please-fill').classList.remove('shakeIt');
+    }, 500)
+  }
 }
 const renderModal = () => {
   document.getElementById('id01').style.display = 'block'
